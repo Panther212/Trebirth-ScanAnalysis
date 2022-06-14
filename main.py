@@ -220,4 +220,4 @@ uploaded_files = st.file_uploader("Choose a file or multiple files to compare",a
 if uploaded_files is not None:
     for image_file in uploaded_files:
        dataframe[:,x] = pd.read_csv(uploaded_file)
-   Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
+       Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
