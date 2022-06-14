@@ -213,7 +213,7 @@ if a == "Farm Information":
 #      "text/csv",
 #      key='download-csv'
 #  )
-number = st.number_input('Insert number of files to process',format = %i)
+number = st.number_input('Insert number of files to process',value = int)
 uploaded_files = st.file_uploader("Choose a file or multiple files to compare",accept_multiple_files=True)
 
 for uploaded_file in uploaded_files:
