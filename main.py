@@ -156,7 +156,7 @@ st.set_page_config(
 	page_title=None,  # String or None. Strings get appended with "• Streamlit". 
 	page_icon=None,  # String, anything supported by st.image, or None.
 )
-
+st.write("HELOO")
 a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
 # df = pd.read_csv("Trebirth.csv")
 
@@ -169,4 +169,3 @@ if a == "Farm Information":
      for image_file in uploaded_files:
         dataframe[:,x] = pd.read_csv(uploaded_file)
         Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
-  st.write("HELLLOOOOO")				  
