@@ -214,12 +214,12 @@ if a == "Farm Information":
 #      key='download-csv'
 #  )
 
-uploaded_file1 = st.file_uploader("Choose a file or multiple files to compare")
-if uploaded_file1 is not None:
-     dataframe = pd.read_csv(uploaded_file1)
+uploaded_files = st.file_uploader("Choose a file or multiple files to compare")
+for uploaded_file in uploaded_files:
+     dataframe = pd.read_csv(uploaded_file)
      Narray = np.array(dataframe.iloc[:,[1]])
      Np_array = np.squeeze(Narray)
-     st.write(Np_array)
+     st.write(Narray)
 
 
 	
