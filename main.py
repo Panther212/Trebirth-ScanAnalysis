@@ -217,7 +217,7 @@ number = st.number_input('Insert number of files to process',value = int)
 uploaded_files = st.file_uploader("Choose a file or multiple files to compare",accept_multiple_files=True)
 
 for uploaded_file in uploaded_files:
-     if (number==1):
+    # if (number==1):
      dataframe = pd.read_csv(uploaded_file)
      Narray = np.array(dataframe.iloc[:,[1]])
      Np_array = np.squeeze(Narray)
