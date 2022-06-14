@@ -213,20 +213,26 @@ if a == "Farm Information":
 #      "text/csv",
 #      key='download-csv'
 #  )
-
+number = st.number_input('Insert number of files to process',format = %i)
 uploaded_files = st.file_uploader("Choose a file or multiple files to compare",accept_multiple_files=True)
+
 for uploaded_file in uploaded_files:
+     if (number==1):
      dataframe = pd.read_csv(uploaded_file)
      Narray = np.array(dataframe.iloc[:,[1]])
      Np_array = np.squeeze(Narray)
      st.write(Narray)
-
-
 	
 generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
-	st.write("Graphs Generated!")
+	#st.write("Graphs Generated!")
+	if (count==0):
+		st.write("No files uploaded!")
+	elif (count==1):
+		st.write("Graphs Generated!")
+	
+	
 	filtered_array = Apply_Filter(Np_array)
 	Plot_Graph(filtered_array)
 	#st.write(Np_array)
