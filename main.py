@@ -215,8 +215,7 @@ if a == "Farm Information":
 #  )
 number = st.number_input('Insert number of files to process',min_value= 0, max_value=4, value=0, step=1)
 uploaded_files = st.file_uploader("Choose a file or multiple files to compare",accept_multiple_files=True)
-
-    if uploaded_files is not None:
+if uploaded_files is not None:
 	x=0	
         for uploaded_file in uploaded_files:	
            dataframe[:,x] = pd.read_csv(uploaded_file)
