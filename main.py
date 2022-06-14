@@ -214,13 +214,22 @@ if a == "Farm Information":
 #      key='download-csv'
 #  )
 
-uploaded_file = st.file_uploader("Choose a file")
-if uploaded_file is not None:
-     dataframe = pd.read_csv(uploaded_file)
+uploaded_file1 = st.file_uploader("Choose a file")
+if uploaded_file1 is not None:
+     dataframe = pd.read_csv(uploaded_file1)
      Narray = np.array(dataframe.iloc[:,[1]])
      Np_array = np.squeeze(Narray)
      st.write(Np_array)
 
+	
+uploaded_file2 = st.file_uploader("Choose a file")
+if uploaded_file2 is not None:
+     dataframe = pd.read_csv(uploaded_file2)
+     Narray = np.array(dataframe.iloc[:,[1]])
+     Np_array = np.squeeze(Narray)
+     st.write(Np_array)
+
+	
 generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
@@ -229,19 +238,11 @@ if generate_graph_button:
 	Plot_Graph(filtered_array)
 	#st.write(Np_array)
 	Calculate_FFT(Np_array)
-# 	Calculate_DCT(Np_array)
-# 	Calculate_DST(Np_array)
-# 	Calculate_STFT2(Np_array)
-# 	Calculate_Phase_Spectrum(Np_array)
- # col1, col2= st.columns(2)
- #
- # with col1:
- #     st.header("Filtered Data")
- #     st.line_chart(Filtered_data)
+	Calculate_DCT(Np_array)
+	Calculate_DST(Np_array)
+	Calculate_STFT2(Np_array)
+	Calculate_Phase_Spectrum(Np_array)
 
- # with col2:
- #     st.header(" Accelerometer")
- #     st.line_chart(Filtered_data)
 
 
 
