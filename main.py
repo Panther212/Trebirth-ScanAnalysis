@@ -218,11 +218,10 @@ uploaded_files = st.file_uploader("Choose a file or multiple files to compare",a
 
 if uploaded_files is not None:
    x=0	
-   for uploaded_file in uploaded_files:	
+      for uploaded_file in uploaded_files:	
         dataframe[:,x] = pd.read_csv(uploaded_file)
         Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
-				   
-        st.write(Np_array[:,x])
+	st.write(Np_array[:,x])
         x=+1				      
 
 #      elif (number==2):
