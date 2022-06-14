@@ -214,20 +214,13 @@ if a == "Farm Information":
 #      key='download-csv'
 #  )
 
-uploaded_file1 = st.file_uploader("Choose a file")
+uploaded_file1 = st.file_uploader("Choose a file or multiple files to compare")
 if uploaded_file1 is not None:
      dataframe = pd.read_csv(uploaded_file1)
      Narray = np.array(dataframe.iloc[:,[1]])
      Np_array = np.squeeze(Narray)
      st.write(Np_array)
 
-	
-uploaded_file2 = st.file_uploader("Choose a file")
-if uploaded_file2 is not None:
-     dataframe = pd.read_csv(uploaded_file2)
-     Narray = np.array(dataframe.iloc[:,[1]])
-     Np_array = np.squeeze(Narray)
-     st.write(Np_array)
 
 	
 generate_graph_button = st.button("Generate Graphs")
