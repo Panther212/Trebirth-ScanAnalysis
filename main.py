@@ -220,8 +220,6 @@ if uploaded_files is not None:# TO See details
    dataframe[:,x] = pd.read_csv(uploaded_file)
    Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
    st.write(Np_array[:,x])
-
-
 #      elif (number==2):
 #       dataframe = pd.read_csv(uploaded_file)
 #       Np_array = np.squeeze(np.array(dataframe.iloc[:,[1]]))
