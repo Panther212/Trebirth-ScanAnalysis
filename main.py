@@ -141,7 +141,7 @@ if a == "Farm Information":
  st.header("Welcome to Trebirth Tech Development")
 
 uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
-if uploaded_file is not None:
+if uploaded_files is not None:
 	for uploaded_file in uploaded_files:
 		dataframe = pd.read_csv(uploaded_file)
 		Np_array = np.squeeze(np.array(dataframe.iloc[:,[1]]))
