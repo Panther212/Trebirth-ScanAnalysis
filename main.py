@@ -161,7 +161,7 @@ a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
 # df = pd.read_csv("Trebirth.csv")
 
 if a == "Farm Information":
- st.header("Radar Raw Data Analysis")
+  st.header("Radar Raw Data Analysis")
 #  form = st.form(key='my_form',clear_on_submit=True)
 #  F_name= form.text_input(label='Enter Farmer Name')
 #  F_health= form.text_input(label='Enter Farm Health')
@@ -215,31 +215,9 @@ if a == "Farm Information":
 #  )
 number = st.number_input('Insert number of files to process',min_value= 0, max_value=4, value=0, step=1)
 uploaded_files = st.file_uploader("Choose a file or multiple files to compare",accept_multiple_files=True)
+
+
 if uploaded_files is not None:
-  for image_file in uploaded_files:
-   dataframe[:,x] = pd.read_csv(uploaded_file)
+    for image_file in uploaded_files:
+       dataframe[:,x] = pd.read_csv(uploaded_file)
    Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
-	
-# generate_graph_button = st.button("Generate Graphs")
-
-# if generate_graph_button:
-# 	#st.write("Graphs Generated!")
-# # 	if (count==0):
-# # 		st.write("No files uploaded!")
-# # 	elif (count==1):
-# # 		st.write("Graphs Generated!")
-# 	filtered_array = Apply_Filter(Np_array)
-# 	Plot_Graph(filtered_array)
-# 	#st.write(Np_array)
-# 	Calculate_FFT(Np_array)
-# 	Calculate_DCT(Np_array)
-# 	Calculate_DST(Np_array)
-# 	Calculate_STFT2(Np_array)
-# 	Calculate_Phase_Spectrum(Np_array)
-
-
-
-
-
-
-
