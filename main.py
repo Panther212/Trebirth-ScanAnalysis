@@ -140,11 +140,12 @@ a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
 if a == "Farm Information":
  st.header("Welcome to Trebirth Tech Development")
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
 if uploaded_file is not None:
-     dataframe = pd.read_csv(uploaded_file)
-     Np_array = np.squeeze(np.array(dataframe.iloc[:,[1]]))
-     st.write(Np_array)
+	for uploaded_file in uploaded_files:
+		dataframe = pd.read_csv(uploaded_file)
+		Np_array = np.squeeze(np.array(dataframe.iloc[:,[1]]))
+		st.write(Np_array)
 
 generate_graph_button = st.button("Generate Graphs")
 
