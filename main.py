@@ -23,18 +23,18 @@ import json
 # result = response['Body'].read()
 # print("Result is",result)
 #retrieve json file from firebase
-# firebase = firebase.FirebaseApplication('https://esp32-d544d-default-rtdb.firebaseio.com/',None)
-# result = firebase.get("test","sensor")
-# result1 = firebase.get("test","scan_number")
-# Np_result = np.array(result)
-# df = pd.DataFrame(Np_result)
-# df.to_csv( "scan.csv")
+firebase = firebase.FirebaseApplication('https://esp32-d544d-default-rtdb.firebaseio.com/',None)
+result = firebase.get("test","sensor")
+result1 = firebase.get("test","scan_number")
+Np_result = np.array(result)
+df = pd.DataFrame(Np_result)
+df.to_csv( "scan.csv")
 
 
 
-# jtopy=json.dumps(result)       #json.dumps take a dictionary as input and returns a string as output.
-# dict_json=json.loads(jtopy)    # json.loads take a string as input and returns a dictionary as output.
-# # print(dict_json)
+jtopy=json.dumps(result)       #json.dumps take a dictionary as input and returns a string as output.
+dict_json=json.loads(jtopy)    # json.loads take a string as input and returns a dictionary as output.
+# print(dict_json)
 
 # Digital Filter starts from here
 def Data_Preprocess(x):
@@ -142,10 +142,10 @@ def Calculate_FFT(sig_data):
    
    
 
-# Data = Data_Preprocess(dict_json)
-# # print("Data is ",Data)
-# Filtered_data = Apply_Filter(Data)
-# plt.savefig("output.jpg")
+Data = Data_Preprocess(dict_json)
+# print("Data is ",Data)
+Filtered_data = Apply_Filter(Data)
+plt.savefig("output.jpg")
 
 
 
@@ -156,16 +156,91 @@ st.set_page_config(
 	page_title=None,  # String or None. Strings get appended with "• Streamlit". 
 	page_icon=None,  # String, anything supported by st.image, or None.
 )
-st.write("HELOO")
+
 a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
 # df = pd.read_csv("Trebirth.csv")
 
 if a == "Farm Information":
-  st.header("Radar Raw Data Analysis")
+ st.header("Welcome to Trebirth Tech Development")
+#  form = st.form(key='my_form',clear_on_submit=True)
+#  F_name= form.text_input(label='Enter Farmer Name')
+#  F_health= form.text_input(label='Enter Farm Health')
+#  Number= form.number_input(label='Enter No. of trees scanned')
+#  Remark = form.text_area(label='Remark')
+#  submit_button = form.form_submit_button(label='Submit')
 
-  number = st.number_input('Insert number of files to process',min_value= 0, max_value=4, value=0, step=1)
-  uploaded_files = st.file_uploader("Choose a file or multiple files to compare",accept_multiple_files=True)
-  if uploaded_files is not None:
-     for image_file in uploaded_files:
-        dataframe[:,x] = pd.read_csv(uploaded_file)
-        Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
+
+#  st.sidebar.markdown(
+#     f"""
+#      * Farmer name :        {F_name}
+#      * Farm health :        {F_health}
+#      * No of trees scanned: {Number}
+#      * Remark      :        {Remark}
+#  """
+#   )
+ st.subheader(f'Scan number is: {result1}')
+ #st.write("Scan number is ", result1)
+ Plot_Graph(Filtered_data)	
+ Calculate_FFT(Np_result)
+ Calculate_DCT(Np_result)
+ Calculate_DST(Np_result)
+ Calculate_STFT2(Np_result)
+ Calculate_Phase_Spectrum(Np_result)	
+ #st.line_chart(Filtered_data, width=1000, height=0, use_container_width=False)
+ st.write(df)
+ 
+
+
+#  if submit_button:
+#      st.write(F_name,F_health,Number,Remark)
+#  new_data = {"Farmer_Name": F_name,"Farm_Health": F_health,"Trees_Scanned": int(Number),"Remark": Remark}
+#  #st.write(new_data)
+#  df = df._append(new_data,ignore_index=True)
+#  df.to_csv("Trebirth.csv",index=False)
+# st.dataframe(df)
+
+
+@st.cache
+def convert_df(df):
+ return df.to_csv().encode('utf-8')
+csv = convert_df(df)
+
+st.download_button(
+     "Press to Download",
+     csv,
+     "file.csv",
+     "text/csv",
+     key='download-csv'
+ )
+
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+     dataframe = pd.read_csv(uploaded_file)
+     Np_array = np.squeeze(np.array(dataframe.iloc[:,[1]]))
+     st.write(Np_array)
+
+generate_graph_button = st.button("Generate Graphs")
+
+if generate_graph_button:
+	st.write("Graphs Generated!")
+	filtered_array = Apply_Filter(Np_array)
+	Plot_Graph(filtered_array)
+	#st.write(Np_array)
+	Calculate_FFT(Np_array)
+	Calculate_DCT(Np_array)
+	Calculate_DST(Np_array)
+	Calculate_STFT2(Np_array)
+	Calculate_Phase_Spectrum(Np_array)
+ # col1, col2= st.columns(2)
+ #
+ # with col1:
+ #     st.header("Filtered Data")
+ #     st.line_chart(Filtered_data)
+
+ # with col2:
+ #     st.header(" Accelerometer")
+ #     st.line_chart(Filtered_data)
+
+
+
+
