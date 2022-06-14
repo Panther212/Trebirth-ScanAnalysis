@@ -169,4 +169,4 @@ if a == "Farm Information":
      for image_file in uploaded_files:
         dataframe[:,x] = pd.read_csv(uploaded_file)
         Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[1]])
-	st.write("HELLLOOOOO")				  
+  st.write("HELLLOOOOO")				  
