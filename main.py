@@ -143,11 +143,14 @@ if a == "Farm Information":
 uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
 if uploaded_files is not None:
 	st.write((len(uploaded_files)),"Files uploaded")
+	st.write(uploaded_files)
 	#for i in range(len(uploaded_file)):
 	
 generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
+	#for i in range(len(uploaded_file)):
+		
 	st.write("Graphs Generated!")
 	filtered_array = Apply_Filter(Np_array)
 	Plot_Graph(filtered_array)
