@@ -128,13 +128,11 @@ def Calculate_FFT(sig_data):
 
 #Streamlit GUI starts from here
 st.set_page_config(
-	layout="centered",  # Can be "centered" or "wide". In the future also "dashboard", etc.
+	layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
 	initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
 	page_title="RAW DATA ANALYSIS",  # String or None. Strings get appended with "• Streamlit". 
 	page_icon= "random",  # String, anything supported by st.image, or None.
 )
-
-st.set_page_config(layout="wide")
 
 st.markdown("""
 <style>
