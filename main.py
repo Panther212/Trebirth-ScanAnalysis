@@ -144,7 +144,7 @@ uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
 if uploaded_files is not None:
 	st.write((len(uploaded_files))+"Files uploaded")
 	#for i in range(len(uploaded_file)):
-
+	
 generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
