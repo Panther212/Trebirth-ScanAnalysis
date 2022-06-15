@@ -142,11 +142,8 @@ if a == "Farm Information":
 
 uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
 if uploaded_files is not None:
-	x=0
-	for uploaded_file in uploaded_files:
-		dataframe.iloc[:,[x]] = pd.read_csv(uploaded_file)
-		Np_array[:,x] = np.squeeze(np.array(dataframe.iloc[:,[x]]))
-		st.write(Np_array[:,x])
+	st.write((len(uploaded_files))+"Files uploaded")
+	#for i in range(len(uploaded_file)):
 
 generate_graph_button = st.button("Generate Graphs")
 
