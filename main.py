@@ -128,7 +128,7 @@ def LayOver_graphs(uploaded_files):
 
 
 #Streamlit GUI starts from here
- st.set_page_config(
+st.set_page_config(
 	layout="centered",  # Can be "centered" or "wide". In the future also "dashboard", etc.
 	initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
 	page_title="RAW DATA ANALYSIS",  # String or None. Strings get appended with "• Streamlit". 
