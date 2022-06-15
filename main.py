@@ -128,59 +128,46 @@ def LayOver_graphs(uploaded_files):
 
 
 #Streamlit GUI starts from here
-st.set_page_config(
+ st.set_page_config(
 	layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
 	initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
 	page_title="RAW DATA ANALYSIS",  # String or None. Strings get appended with "• Streamlit". 
 	page_icon= "random",  # String, anything supported by st.image, or None.
 )
 
-st.markdown("""
-<style>
-.medium-font {
-    font-size:100px !important;
-}
-</style>
-""", unsafe_allow_html=True)
+ st.markdown("""
+ <style>
+ .medium-font {
+     font-size:100px !important;
+ }
+ </style>
+ """, unsafe_allow_html=True)
 
-a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
-# df = pd.read_csv("Trebirth.csv")
+ a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
+ # df = pd.read_csv("Trebirth.csv")
 
-if a == "Farm Information":
- st.header("Radar Data Analysis")
+ if a == "Farm Information":
+  st.header("Radar Data Analysis")
 
-uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
-if uploaded_files is not None:
-	st.write((len(uploaded_files)),"Files uploaded")
-	st.write(uploaded_files)
+ uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
+ if uploaded_files is not None:
+	 st.write((len(uploaded_files)),"Files uploaded")
+	 st.write(uploaded_files)
 	#for i in range(len(uploaded_file)):
 	
-generate_graph_button = st.button("Generate Graphs")
+ generate_graph_button = st.button("Generate Graphs")
 
-if generate_graph_button:
-	LayOver_graphs(uploaded_files)
-	for i in range(len(uploaded_files)):
-		df = pd.read_csv(uploaded_files[i])
-		Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
-		st.write('Graphs for:', uploaded_files[i].name)
-		st.write(Np_array)
-		filtered_array = Apply_Filter(Np_array)
-		Plot_Graph(filtered_array)
-		Calculate_FFT(Np_array)
-		Calculate_DCT(Np_array)
-		Calculate_DST(Np_array)
-		Calculate_STFT2(Np_array)
-		Calculate_Phase_Spectrum(Np_array)
- # col1, col2= st.columns(2)
- #
- # with col1:
- #     st.header("Filtered Data")
- #     st.line_chart(Filtered_data)
-
- # with col2:
- #     st.header(" Accelerometer")
- #     st.line_chart(Filtered_data)
-
-
-
-
+ if generate_graph_button:
+	#LayOver_graphs(uploaded_files)
+	 for i in range(len(uploaded_files)):
+		 df = pd.read_csv(uploaded_files[i])
+		 Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
+		 st.write('Graphs for:', uploaded_files[i].name)
+		 st.write(Np_array)
+		 filtered_array = Apply_Filter(Np_array)
+		 Plot_Graph(filtered_array)
+		 Calculate_FFT(Np_array)
+		 Calculate_DCT(Np_array)
+		 Calculate_DST(Np_array)
+		 Calculate_STFT2(Np_array)
+		 Calculate_Phase_Spectrum(Np_array)
