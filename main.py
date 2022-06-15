@@ -143,21 +143,21 @@ def LayOver_graphs(uploaded_files):
   </style>
   """, unsafe_allow_html=True)
 
-  a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
+ a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
   # df = pd.read_csv("Trebirth.csv")
 
-  if a == "Farm Information":
+ if a == "Farm Information":
    st.header("Radar Data Analysis")
 
-  uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
-  if uploaded_files is not None:
+ uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
+ if uploaded_files is not None:
 	  st.write((len(uploaded_files)),"Files uploaded")
 	  st.write(uploaded_files)
 	 #for i in range(len(uploaded_file)):
 	
-  generate_graph_button = st.button("Generate Graphs")
+ generate_graph_button = st.button("Generate Graphs")
 
-  if generate_graph_button:
+ if generate_graph_button:
 	 #LayOver_graphs(uploaded_files)
 	  for i in range(len(uploaded_files)):
 		  df = pd.read_csv(uploaded_files[i])
