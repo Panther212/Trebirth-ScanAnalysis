@@ -135,7 +135,7 @@ def LayOver_graphs(uploaded_files):
 	page_icon= "random",  # String, anything supported by st.image, or None.
 )
 
-  st.markdown("""
+ st.markdown("""
   <style>
   .medium-font {
       font-size:100px !important;
