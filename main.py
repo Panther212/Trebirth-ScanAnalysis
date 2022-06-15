@@ -161,7 +161,7 @@ if generate_graph_button:
 		df = pd.read_csv(uploaded_files[i])
 		Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
 		st.markdown('<p class="medium-font">Graphs for:</p>', unsafe_allow_html=True)
-	        st.write(uploaded_files[i].name)
+		st.write(uploaded_files[i].name)
 		st.write(Np_array)
 		filtered_array = Apply_Filter(Np_array)
 		Plot_Graph(filtered_array)
