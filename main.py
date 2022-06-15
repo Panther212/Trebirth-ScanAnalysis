@@ -152,6 +152,7 @@ if generate_graph_button:
 	for i in range(len(uploaded_files)):
 		df = pd.read_csv(uploaded_files[i])
 		Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
+		st.write("Graphs for:",uploaded_files[i].name)
 		st.write(Np_array)
 		filtered_array = Apply_Filter(Np_array)
 		Plot_Graph(filtered_array)
