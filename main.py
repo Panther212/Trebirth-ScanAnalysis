@@ -128,12 +128,12 @@ def LayOver_graphs(uploaded_files):
 
 
 #Streamlit GUI starts from here
-st.set_page_config(
+ st.set_page_config(
 	layout="centered",  # Can be "centered" or "wide". In the future also "dashboard", etc.
 	initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
 	page_title="RAW DATA ANALYSIS",  # String or None. Strings get appended with "• Streamlit". 
 	page_icon= "random",  # String, anything supported by st.image, or None.
-)
+ )
 
  st.markdown("""
   <style>
@@ -142,11 +142,10 @@ st.set_page_config(
   }
   </style>
   """, unsafe_allow_html=True)
-
  a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
   # df = pd.read_csv("Trebirth.csv")
 
- if a == "Farm Information":
+  if a == "Farm Information":
    st.header("Radar Data Analysis")
 
  uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
