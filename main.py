@@ -149,17 +149,18 @@ if uploaded_files is not None:
 generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
-	#for i in range(len(uploaded_file)):
-		
-	st.write("Graphs Generated!")
-	filtered_array = Apply_Filter(Np_array)
-	Plot_Graph(filtered_array)
-	#st.write(Np_array)
-	Calculate_FFT(Np_array)
-	Calculate_DCT(Np_array)
-	Calculate_DST(Np_array)
-	Calculate_STFT2(Np_array)
-	Calculate_Phase_Spectrum(Np_array)
+	for i in range(len(uploaded_files)):
+		df = pd.read_csv(uploaded_files[i])
+		Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
+		st.write(Np_array)
+	        #st.write("Graphs Generated!")
+	        filtered_array = Apply_Filter(Np_array)
+	        Plot_Graph(filtered_array)
+	        Calculate_FFT(Np_array)
+	        Calculate_DCT(Np_array)
+	        Calculate_DST(Np_array)
+	        Calculate_STFT2(Np_array)
+	        Calculate_Phase_Spectrum(Np_array)
  # col1, col2= st.columns(2)
  #
  # with col1:
