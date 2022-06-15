@@ -154,7 +154,7 @@ if generate_graph_button:
 		Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
 		st.write(Np_array)
 		filtered_array = Apply_Filter(Np_array)
-	        Plot_Graph(filtered_array)
+		Plot_Graph(filtered_array)
 	        Calculate_FFT(Np_array)
 	        Calculate_DCT(Np_array)
 	        Calculate_DST(Np_array)
