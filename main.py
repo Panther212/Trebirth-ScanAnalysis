@@ -159,7 +159,7 @@ def LayOver_graphs(uploaded_files):
 
  if generate_graph_button:
 	#LayOver_graphs(uploaded_files)
-	 for i in range(len(uploaded_files)):
+	 for i in range(len(uploaded_files)-1):
 		 df = pd.read_csv(uploaded_files[i])
 		 Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
 		 st.write('Graphs for:', uploaded_files[i].name)
