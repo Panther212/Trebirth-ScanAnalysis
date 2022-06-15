@@ -136,13 +136,12 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-.big-font {
-    font-size:300px !important;
+.medium-font {
+    font-size:100px !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<p class="big-font">Hello World !!</p>', unsafe_allow_html=True)
 a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
 # df = pd.read_csv("Trebirth.csv")
 
@@ -161,8 +160,8 @@ if generate_graph_button:
 	for i in range(len(uploaded_files)):
 		df = pd.read_csv(uploaded_files[i])
 		Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
-		st.subheader("Graphs for:")
-		st.write(uploaded_files[i].name)
+		st.markdown('<p class="medium-font">Graphs for:</p>', unsafe_allow_html=True)
+	        st.write(uploaded_files[i].name)
 		st.write(Np_array)
 		filtered_array = Apply_Filter(Np_array)
 		Plot_Graph(filtered_array)
