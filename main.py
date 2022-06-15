@@ -123,7 +123,8 @@ def Calculate_FFT(sig_data):
    st.plotly_chart(fig, use_container_width=False, sharing="streamlit")
    
    
-
+def LayOver_graphs(uploaded_files):
+	
 
 
 #Streamlit GUI starts from here
@@ -146,7 +147,7 @@ a=st.sidebar.radio('Navigation',['Farm Information','Farmer Data'])
 # df = pd.read_csv("Trebirth.csv")
 
 if a == "Farm Information":
- st.header("Welcome to Trebirth Tech Development")
+ st.header("Radar Data Analysis")
 
 uploaded_files = st.file_uploader("Choose a file",accept_multiple_files=True)
 if uploaded_files is not None:
@@ -157,6 +158,7 @@ if uploaded_files is not None:
 generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
+	LayOver_graphs(uploaded_files)
 	for i in range(len(uploaded_files)):
 		df = pd.read_csv(uploaded_files[i])
 		Np_array = np.squeeze(np.array(df.iloc[:,[i]]))
