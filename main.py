@@ -42,17 +42,24 @@ def Data_Preprocess(x):
  # print("Sig is ",sig)
  return sig
 
-def Apply_Filter(sig):
-    sos = signal.butter(1, [0.1,10], 'band', fs=100, output='sos')
-    filtered = signal.sosfilt(sos, sig)
-    # print ("Filtered data is ",filtered)
-    return filtered.squeeze()
+# def Apply_Filter(sig):
+#     sos = signal.butter(1, [0.1,10], 'band', fs=100, output='sos')
+#     filtered = signal.sosfilt(sos, sig)
+#     # print ("Filtered data is ",filtered)
+#     return filtered.squeeze()
 
 
-def Plot_Graph(filtered):
+# def Plot_Graph(filtered):
+#    t = np.linspace(0, 30,3000, False)
+#    t = t[:filtered.size]
+#    fig = px.line(x=t, y=filtered, labels={'x':'Time', 'y':'Amplitude'},title='Time Series', width = 1000, height = 600)
+#    fig.update_traces(line_color='#2AA6FB', line_width=1.5)
+#    st.plotly_chart(fig, use_container_width=False, sharing="streamlit")
+
+def Plot_Graph(sig_data):
    t = np.linspace(0, 30,3000, False)
-   t = t[:filtered.size]
-   fig = px.line(x=t, y=filtered, labels={'x':'Time', 'y':'Amplitude'},title='Time Series', width = 1000, height = 600)
+   t = t[:sig_data.size]
+   fig = px.line(x=t, y=sig_data, labels={'x':'Time', 'y':'Amplitude'},title='Time Series', width = 1000, height = 600)
    fig.update_traces(line_color='#2AA6FB', line_width=1.5)
    st.plotly_chart(fig, use_container_width=False, sharing="streamlit")
 
@@ -225,8 +232,8 @@ generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
 	st.write("Graphs Generated!")
-	filtered_array = Apply_Filter(Np_array)
-	Plot_Graph(filtered_array)
+# 	filtered_array = Apply_Filter(Np_array)
+	Plot_Graph(Np_array)
 	#st.write(Np_array)
 	Calculate_FFT(Np_array)
 	Calculate_DCT(Np_array)
