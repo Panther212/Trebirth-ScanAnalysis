@@ -57,12 +57,12 @@ def Plot_Graph(filtered):
    fig.update_traces(line_color='#2AA6FB', line_width=1.5)
    st.plotly_chart(fig, use_container_width=False, sharing="streamlit")
 
-# def Plot_Graph(sig_data):
-#    t = np.linspace(0, 30,3000, False)
-#    t = t[:sig_data.size]
-#    fig = px.line(x=t, y=sig_data, labels={'x':'Time', 'y':'Amplitude'},title='Time Series', width = 1000, height = 600)
-#    fig.update_traces(line_color='#2AA6FB', line_width=1.5)
-#    st.plotly_chart(fig, use_container_width=False, sharing="streamlit")
+def Plot_Graph2(sig_data):
+   t = np.linspace(0, 30,3000, False)
+   t = t[:sig_data.size]
+   fig = px.line(x=t, y=sig_data, labels={'x':'Time', 'y':'Amplitude'},title='Time Series', width = 1000, height = 600)
+   fig.update_traces(line_color='#2AA6FB', line_width=1.5)
+   st.plotly_chart(fig, use_container_width=False, sharing="streamlit")
 
    
 def Calculate_DCT(sig_data):
@@ -236,6 +236,7 @@ if generate_graph_button:
 	st.write("Graphs Generated!")
 	filtered_array = Apply_Filter(Np_array)
 	Plot_Graph(filtered_array)
+	Plot_Graph2(Np_array)
 	#st.write(Np_array)
 	Calculate_FFT(Np_array)
 	Calculate_DCT(Np_array)
