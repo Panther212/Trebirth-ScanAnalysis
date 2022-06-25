@@ -15,6 +15,7 @@ from PIL import Image
 import csv
 import pymysql
 import boto3
+import openpyxl
 import json
 
 
