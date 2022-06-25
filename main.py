@@ -223,7 +223,8 @@ if a == "Farm Information":
 
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
-     dataframe = pd.read_csv(uploaded_file)
+    # dataframe = pd.read_csv(uploaded_file)
+     dataframe = pd.read_excel(uploaded_file, sheet_name=None)
      Narray = np.array(dataframe.iloc[:,[0]])
      Np_array = np.squeeze(Narray)
      st.write(Np_array)
