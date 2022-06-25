@@ -234,7 +234,7 @@ generate_graph_button = st.button("Generate Graphs")
 
 if generate_graph_button:
 	st.write("Graphs Generated!")
- 	filtered_array = Apply_Filter(Np_array)
+	filtered_array = Apply_Filter(Np_array)
 	Plot_Graph(filtered_array)
 	#st.write(Np_array)
 	Calculate_FFT(Np_array)
