@@ -116,7 +116,7 @@ def Calculate_STFT2(sig_data):
 def Calculate_Phase_Spectrum(sig_data):
    
      fs = 100
-     f, t, Sxx = signal.spectrogram(sig_data, fs,nperseg = 512)
+     f, t, Sxx = signal.spectrogram(sig_data, fs,nperseg = 128)
      #fig = go.Figure(data=[go.Mesh3d(x=t, y=f, z=np.real(Zxx), color='red', opacity=0.50)])
      trace = [go.Heatmap(
      x= t,
