@@ -37,6 +37,15 @@ import json
 # dict_json=json.loads(jtopy)    # json.loads take a string as input and returns a dictionary as output.
 # # print(dict_json)
 
+def butter_lowpass(cutoff, fs, order=5):
+    return butter(order, cutoff, fs=fs, btype='low', analog=False)
+
+def butter_lowpass_filter(data, cutoff, fs, order=5):
+    b, a = butter_lowpass(cutoff, fs, order=order)
+    y = lfilter(b, a, data)
+    return y
+
+
 # Digital Filter starts from here
 def Data_Preprocess(x):
  sig = [np.array(x)]
@@ -50,7 +59,7 @@ def Apply_Filter(sig):
     return filtered.squeeze()
 
 
-def Plot_Graph(filtered):
+def Plot_Graph(filtered):	
    t = np.linspace(0, 30,3000, False)
    t = t[:filtered.size]
    fig = px.line(x=t, y=filtered, labels={'x':'Time', 'y':'Amplitude'},title='Time Series', width = 1000, height = 600)
@@ -235,7 +244,8 @@ generate_graph_button = st.button("Generate Graphs")
 if generate_graph_button:
 	st.write("Graphs Generated!")
 	filtered_array = Apply_Filter(Np_array)
-	Plot_Graph(filtered_array)
+	y = butter_lowpass_filter(Np_array, 5, 1500, 1)
+	Plot_Graph(y)
 	Plot_Graph2(Np_array)
 	#st.write(Np_array)
 	Calculate_FFT(Np_array)
@@ -243,6 +253,11 @@ if generate_graph_button:
 	Calculate_DST(Np_array)
 	Calculate_STFT2(Np_array)
 	Calculate_Phase_Spectrum(Np_array)
+	Calculate_FFT(y)
+	Calculate_DCT(y)
+	Calculate_DST(y)
+	Calculate_STFT2(y)
+	Calculate_Phase_Spectrum(y)
  # col1, col2= st.columns(2)
  #
  # with col1:
