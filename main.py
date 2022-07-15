@@ -245,7 +245,7 @@ generate_graph_button = st.button("Generate Graphs")
 if generate_graph_button:
 	st.write("Graphs Generated!")
 	filtered_array = Apply_Filter(Np_array)
-	y = butter_lowpass_filter(Np_array, 5, 1500, 1)
+	y = butter_lowpass_filter(Np_array, 20, 1500, 1)
 	Plot_Graph(y)
 	Plot_Graph2(Np_array)
 	#st.write(Np_array)
