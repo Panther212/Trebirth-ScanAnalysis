@@ -1,6 +1,7 @@
 import streamlit as st
 from firebase import  firebase
 from scipy import signal
+from scipy.signal import butter, lfilter
 import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 import plotly.express as px
